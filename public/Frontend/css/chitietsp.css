@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.imgchinh {
+    height: 400px;
+    width: 350px;
+}
+.imgphu {
+    height: 100px;
+    width: 100px;
+}
+.container1 {
+    height: 500px;
+    width: auto;
+}
+.container2 {
+    height: 200px;
+    width: auto;
+}
+.imgdtproduct{
+    height: 150px;
+    width: 150px;
+}
