@@ -11,25 +11,53 @@ class HomeUserController extends Controller
 {
     public function home()
     {
-        $categories = Category::all();
         $products = Product::all();
-        return view("Frontend.Layout.TrangChu", compact('categories'));
+        $category = Category::all();
+        return view("Frontend.Layout.TrangChu", compact('products', 'category'));
     }
-    public function spdienthoai()
+    public function spquanao()
     {
         $categoryId = 1;
-        $dienthoais = Product::where('category_id', $categoryId)->get();
-        return view("Frontend.Layout.SanPhamDienThoai", compact('dienthoais'));
+        $product = Product::where('category_id', $categoryId)->get();
+        return view("Frontend.Layout.SanPham", compact('product'));
     }
-    public function splaptop()
+    public function spaokhoac()
     {
         $categoryId = 2;
-        $laptops = Product::where('category_id', $categoryId)->get();
-        return view("Frontend.Layout.SanPhamLaptop", compact('laptops'));
+        $product = Product::where('category_id', $categoryId)->get();
+        return view("Frontend.Layout.SanPham", compact('product'));
+    }
+    public function spgiay()
+    {
+        $categoryId = 3;
+        $product = Product::where('category_id', $categoryId)->get();
+        return view("Frontend.Layout.SanPham", compact('product'));
+    }
+    public function spphukien()
+    {
+        $categoryId = 4;
+        $product = Product::where('category_id', $categoryId)->get();
+        return view("Frontend.Layout.SanPham", compact('product'));
     }
     public function chitietsp($id)
     {
         $product = Product::findOrFail($id);
-        return view("Frontend.Layout.ChiTietSanPham", compact('product'));
+        $category = Category::all();
+        return view("Frontend.Layout.ChiTietSanPham", compact('product', 'category'));
+    }
+
+    public function gioithieu()
+    {
+        return view('Frontend.Layout.GioiThieu');
+    }
+
+    public function lienhe()
+    {
+        return view('Frontend.Layout.LienHe');
+    }
+
+    public function map()
+    {
+        return view('Frontend.Layout.minimap');
     }
 }

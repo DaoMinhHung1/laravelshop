@@ -20,30 +20,31 @@
             <div class="col-2">
                 <ul class="list-group">
                     <li class="list-group-item">Tất cả</li>
-                    <li class="list-group-item">Laptop Văn Phòng</li>
-                    <li class="list-group-item">Laptop Gaming</li>
+                    <li class="list-group-item">Điện thoại IPhone</li>
+                    <li class="list-group-item">Điện thoại SamSung</li>
                 </ul>
 
             </div>
-            @foreach($laptops as $laptops)
+            @foreach($product as $pd)
             <div class="col-2">
                 <div class="card">
-                    <img class="imgdtproduct mx-auto mt-3" src="{{ ('storage/images/'. $laptops->imgproduct)}}" alt="">
+                    <img class="imgdtproduct mx-auto mt-3" src="{{ ('/storage/images/'. $pd->imgproduct)}}" alt="">
                     <div class="card-body">
-                        <h5 class="card-title"><strong>{{$laptops->nameproduct}}</strong></h5>
-                        <p class="card-text">{{$laptops->desproduct}}</p>
-                        <p class="giatien">{{$laptops->priceproduct}} <span>đ</span></p>
+                        <h5 class="card-title"><strong>{{$pd->nameproduct}}</strong></h5>
+                        <p class="card-text">{{$pd->desproduct}}</p>
+                        <p class="giatien">{{$pd->priceproduct}} <span>đ</span></p>
 
-                        <form action="{{ route('home.chitietsp', ['id' => $laptops->id]) }}">
+                        <form action="{{ route('home.chitietsp', ['id' => $pd->id]) }}">
                             <button class="button">Mua</button>
                         </form>
+
                     </div>
                 </div>
             </div>
             @endforeach
         </div>
     </div>
-    @include('Frontend.Component.Footter');
+    @include('Frontend.Component.Footter')
 </body>
 
 </html>

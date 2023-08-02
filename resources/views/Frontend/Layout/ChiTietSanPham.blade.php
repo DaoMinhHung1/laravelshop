@@ -25,6 +25,7 @@
                 <h3>{{$product->nameproduct}}</h1>
                     <p><strong>Tình trạng:</strong><span> Còn hàng</span></p>
                     <p><strong>Trạng thái:</strong><span> Còn hàng</span></p>
+                    <p><strong>Danh mục:</strong><span>{{$product->category->name}}</span></p>
                     <p><strong>Giá tiền:</strong><span> {{$product->priceproduct}}Vnd</span></p>
                     <button class="button">Đặt hàng</button>    
             </div>
@@ -41,5 +42,4 @@
     </div>
     @include('Frontend.Component.Footter')
 </body>
-
 </html>

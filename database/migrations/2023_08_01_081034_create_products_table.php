@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('nameproduct');
             $table->integer('priceproduct');
             $table->string('imgproduct');
+            $table->string('statusproduct');
             $table->string('desproduct');
             $table->unsignedBigInteger('category_id');
             $table->timestamps();

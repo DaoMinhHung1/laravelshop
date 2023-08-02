@@ -5,15 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/Frontend/css/home.css">
 </head>
-
 <body>
     @include('Frontend.Component.Header')
     <!-- Ảnh  -->
-    <div class="container-fluid ">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12 p-0">
-                <img src="Frontend/img/anhshop.jpg" class="img-fluid full-width-img" alt="">
+                <div class="owl-carousel">
+                    <img src="/Frontend/img/anhshop.jpg" class="img-fluid  item" alt="">
+                    <img src="/Frontend/img/anhshop.jpg" class="img-fluid  item" alt="">
+                    <img src="/Frontend/img/anhshop.jpg" class="img-fluid  item" alt="">
+                </div>
             </div>
         </div>
     </div>
@@ -26,57 +32,44 @@
             </div>
         </div>
         <div class="row justify-content-center">
+            @foreach($products as $product)
             <div class="col-2">
                 <div class="card">
-                    <img src="Frontend/img/anhthoitrang.jpg" class="img" alt="Minh Hung">
+                    <img src="{{('/storage/images/' . $product->imgproduct)}}" class="img" alt="Minh Hung">
                     <div class="card-body">
-                        <h5 class="card-title"><strong>Set đồ nữ dễ thương</strong></h5>
-                        <p class="card-text">Thời trang & phụ kiện</p>
-                        <p class="giatien">200.000 <span>đ</span></p>
-                        <Button class="button">Mua</Button>
+                        <h5 class="card-title"><strong>{{$product->nameproduct}}</strong></h5>
+                        <p class="card-text">{{$product->category->name}}</p>
+                        <p class="giatien">{{$product->priceproduct}} <span>K</span></p>
+                        <form action="{{route('home.chitietsp', ['id' => $product->id] )}}">
+                            <button type="submit" class="button">Mua</button>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="col-2">
-                <div class="card">
-                    <img src="Frontend/img/anhthoitrang.jpg" class="img" alt="Minh Hung">
-                    <div class="card-body">
-                        <h5 class="card-title">Set đồ nữ dễ thương</h5>
-                        <p class="card-text">Thời trang & phụ kiện</p>
-                        <p>200.000Vnd</p>
-                        <Button>Mua</Button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="card">
-                    <img src="Frontend/img/anhthoitrang.jpg" class="img" alt="Minh Hung">
-                    <div class="card-body">
-                        <h5 class="card-title">Set đồ nữ dễ thương</h5>
-                        <p class="card-text">Thời trang & phụ kiện</p>
-                        <p>200.000Vnd</p>
-                        <Button>Mua</Button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="card">
-                    <img src="Frontend/img/anhthoitrang.jpg" class="img" alt="Minh Hung">
-                    <div class="card-body">
-                        <h5 class="card-title">Set đồ nữ dễ thương</h5>
-                        <p class="card-text">Thời trang & phụ kiện</p>
-                        <p>200.000Vnd</p>
-                        <Button>Mua</Button>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 
     @include('Frontend.Component.Footter')
 
-    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                items: 1,
+                autoplay: true,
+                autoplayTimeout: 2000,
+                autoplayHoverPause: true,
+             // Hiển thị 3 ảnh trên một slide
+            });
+        });
     </script>
+
 </body>
 
 </html>

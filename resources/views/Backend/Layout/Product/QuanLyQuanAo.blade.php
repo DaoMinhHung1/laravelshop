@@ -1,6 +1,6 @@
 @include('Backend.Component.Header')
 <div class="col-10">
-    <h3>Quản lý Điện thoại</h3>
+    <h3>Quản lý Quần Áo</h3>
     <div class="container">
         <div class="row mt-5 ">
             <div class="col-12">
@@ -13,6 +13,7 @@
                                 <th scope="col">Tên</th>
                                 <th scope="col">Ảnh</th>
                                 <th scope="col">Giá</th>
+                                <th scope="col">Tình trạng</th>
                                 <th scope="col">Mô tả</th>
                                 <th scope="col">Xóa</th>
                                 <th scope="col">Sửa</th>
@@ -21,25 +22,26 @@
                         </thead>
                         <tbody>
                             
-                            @foreach ($products as $dienthoai)
+                            @foreach ($products as $product)
                             <tr>
-                                <td>{{$dienthoai->maproduct}}</td>
-                                <td>{{$dienthoai->nameproduct}}</td>
+                                <td>{{$product->maproduct}}</td>
+                                <td>{{$product->nameproduct}}</td>
                                 <td>
-                                    <img class="imgproduct" src="{{ ('storage/images/' . $dienthoai->imgproduct)}}"
+                                    <img class="imgproduct" src="{{ ('storage/images/' . $product->imgproduct)}}"
                                         alt="">
                                 </td>
-                                <td>{{$dienthoai->priceproduct}}</td>
-                                <td>{{$dienthoai->desproduct}}</td>
+                                <td>{{$product->priceproduct}}</td>
+                                <td>{{$product->statusproduct}}</td>
+                                <td>{{$product->desproduct}}</td>
                                 <td>
-                                <form action="{{ route('dienthoai.delete', ['id' => $dienthoai->id]) }}" method="POST">
+                                <form action="{{ route('product.delete', ['id' => $product->id]) }}" method="POST">
                                  @csrf
                                  @method('DELETE')
                                      <button type="submit" class="btn btn-danger">Xóa</button>
                                   </form>
                                 </td>
                                 <td>
-                                    <form action="{{route('dienthoai.edit', ['id' => $dienthoai->id]) }}"> 
+                                    <form action="{{route('product.edit', ['id' => $product->id]) }}"> 
                                         <button type="submit" class="btn btn-warning">Sửa</button>
                                     </form>
                                 </td>

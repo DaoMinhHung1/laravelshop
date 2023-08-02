@@ -40,17 +40,18 @@
                         Danh Mục Sản Phẩm
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="{{route('home.dienthoai')}}">Điện thoại</a></li>
-                        <li><a class="dropdown-item" href="{{route('home.laptop')}}">Laptop</a></li>
-                        <li><a class="dropdown-item" href="#">Các loại thiết bị điện tử</a></li>
+                        <li><a class="dropdown-item" href="{{route('home.quanao')}}">Quần Áo</a></li>
+                        <li><a class="dropdown-item" href="{{route('home.aokhoac')}}">Áo Khoác</a></li>
+                        <li><a class="dropdown-item" href="{{route('home.giay')}}">Giày</a></li>
+                        <li><a class="dropdown-item" href="{{route('home.phukien')}}">Phụ Kiện</a></li>
                         <!-- Thêm các mục sản phẩm khác vào đây -->
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Giới thiệu</a>
+                    <a class="nav-link" href="/gioithieu">Giới thiệu</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Liên hệ</a>
+                    <a class="nav-link" href="/lienhe">Liên hệ</a>
                 </li>
             </ul>
         </div>

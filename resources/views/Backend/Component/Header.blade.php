@@ -39,9 +39,11 @@
                         </a>
                         <!-- Dropdown menu -->
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="/showdt">Quản lý Điện Thoại</a>
-                            <a class="dropdown-item" href="/showlaptop">Quản lý LapTop</a>
-                            <a class="dropdown-item" href="/adddt">Thêm</a>
+                            <a class="dropdown-item" href="/showqa">Quản lý Quần Áo</a>
+                            <a class="dropdown-item" href="/showak">Quản lý Áo Khoác</a>
+                            <a class="dropdown-item" href="/showg">Quản lý Giày</a>
+                            <a class="dropdown-item" href="/showpk">Quản lý Phụ Kiện</a>
+                            <a class="dropdown-item" href="/add">Thêm</a>
                         </div>
                     </li>
                     <a href="/home"> 

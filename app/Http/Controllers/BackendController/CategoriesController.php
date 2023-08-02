@@ -11,6 +11,6 @@ class CategoriesController extends Controller
    public function categories()
    {
       $categories = Category::all();
-      return view('Backend.Layout.DienThoai.ThemDienThoai', compact('categories'));
+      return view('Backend.Layout.Product.ThemSanPham', compact('categories'));
    }
 }

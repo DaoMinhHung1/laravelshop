@@ -15,8 +15,10 @@ class CategorySeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-            ['name' => 'Điện Thoại'],
-            ['name' => 'Laptop'],
+            ['name' => 'Quần Áo'],
+            ['name' => 'Áo Khoác'],
+            ['name' => 'Giày'],
+            ['name' => 'Phụ Kiện'],
         ]);
     }
 }
