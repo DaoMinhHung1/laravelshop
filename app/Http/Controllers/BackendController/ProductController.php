@@ -38,7 +38,8 @@ class ProductController extends Controller
 
     public function adddt()
     {
-        return view('Backend.Layout.Product.ThemSanPham');
+        $categories = Category::all();
+        return view('Backend.Layout.Product.ThemSanPham', compact('categories'));
     }
     public function addProduct(Request $request)
     {

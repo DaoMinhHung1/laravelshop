@@ -1,0 +1,28 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@keyframes slideInFormLeft {
+    0%{
+        transform: translateX(-20%);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+@keyframes slideInFormRight {
+    0%{
+        transform: translateX(20%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+.animated-slide-left {
+    animation: slideInFormLeft 1s forwards; /* 1s là thời gian của hiệu ứng */
+}
+.animated-slide-right {
+    animation: slideInFormRight 1s forwards; /* 1s là thời gian của hiệu ứng */
+}

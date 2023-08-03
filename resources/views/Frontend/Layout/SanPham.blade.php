@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="row mt-3">
-            <div class="col-2">
+            <div class="col-2 animated-slide-title">
                 <ul class="list-group">
                     <li class="list-group-item">Tất cả</li>
                     <li class="list-group-item">Điện thoại IPhone</li>
@@ -26,7 +26,7 @@
 
             </div>
             @foreach($product as $pd)
-            <div class="col-2">
+            <div class="col-2 animated-slide-product">
                 <div class="card">
                     <img class="imgdtproduct mx-auto mt-3" src="{{ ('/storage/images/'. $pd->imgproduct)}}" alt="">
                     <div class="card-body">

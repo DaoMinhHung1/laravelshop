@@ -14,12 +14,46 @@
     <Header class="bg-light">
         <div class="container">
             <div class="row">
-                <div class="col-6">
+                <div class="col-6 mt-3">
                     <h3>Admin</h3>
                 </div>
-                <div class="col-6 text-end">
+                <div class="col-5 text-end mt-2">
                     <img class="avatar" src="/Frontend/img/minhhung.png" alt="">
-                    <span>Đăng xuất</span>
+                </div>
+                <div class="col-1 text-end mt-2">
+                    <ul class="d-flex list-unstyled ">
+                        <!-- Authentication Links -->
+                        @guest
+                        @if (Route::has('login'))
+                        <li class="">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                        @endif
+
+                        @if (Route::has('register'))
+                        <li class="">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                        @endif
+                        @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                        @endguest
+                    </ul>
                 </div>
             </div>
         </div>
@@ -33,8 +67,7 @@
                     </a>
                     <li class="list-group-item dropdown">
                         <!-- Dropdown trigger button -->
-                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Quản lý
                         </a>
                         <!-- Dropdown menu -->
@@ -46,7 +79,7 @@
                             <a class="dropdown-item" href="/add">Thêm</a>
                         </div>
                     </li>
-                    <a href="/home"> 
+                    <a href="/home">
                         <li class="list-group-item">Quay về</li>
                     </a>
                 </ul>

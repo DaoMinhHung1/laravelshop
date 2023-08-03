@@ -12,9 +12,9 @@
 <body>
     @include('Frontend.Component.Header')
     <!-- Ảnh  -->
-    <div class="container-fluid">
+    <div class="container-fluid top">
         <div class="row">
-            <div class="col-12 p-0">
+            <div class="col-12 p-0 animated-slide-banner">
                 <div class="owl-carousel">
                     <img src="/Frontend/img/anhshop.jpg" class="img-fluid  item" alt="">
                     <img src="/Frontend/img/anhshop.jpg" class="img-fluid  item" alt="">
@@ -31,7 +31,7 @@
                 <p class="ptitle">Top trending tuần này</p>
             </div>
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center animated-slide-product">
             @foreach($products as $product)
             <div class="col-2">
                 <div class="card">

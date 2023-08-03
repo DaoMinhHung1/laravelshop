@@ -1,6 +1,6 @@
 @include('Backend.Component.Header')
 <div class="col-10">
-    <h3>Thêm Điện thoại</h3>
+    <h3>Thêm Sản Phẩm</h3>
     <div class="container mt-5">
         <form action="{{ route('product.add') }}" method="POST" enctype="multipart/form-data">
             @csrf

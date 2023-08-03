@@ -3,11 +3,18 @@
     padding: 0px;
     font-family: "Times New Roman", Times, serif;
 }
+body{
+    padding-top: 100px;
+}
 Header {
-    height: 40px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+.namethuonghieu{
+    margin-top: 10px;
+    color: white;
 }
 /* Header */
 .titlename {
@@ -21,11 +28,6 @@ Header {
 }
 /* Header */
 
-.bg-shop {
-    color: black;
-    display: flex;
-    justify-content: center;
-}
 .linktitle{
     color: black;
     list-style: none;
@@ -85,4 +87,41 @@ Header {
 .owl-carousel .owl-item img {
     width: 100%;
     height: auto;
+}
+.minimap{
+    height: 250px;
+    width: 350px;
+}
+@keyframes slideInImgBanner {
+    0%{
+        transform: translateY(-100px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+@keyframes slideInProduct {
+    0%{
+        transform: translateY(100px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+@keyframes slideInTitle {
+    0%{
+        transform: translateX(-30%);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+.animated-slide-banner {
+    animation: slideInImgBanner 1s forwards; /* 1s là thời gian của hiệu ứng */
+}
+.animated-slide-product {
+    animation: slideInProduct 1s forwards; /* 1s là thời gian của hiệu ứng */
+}
+.animated-slide-title {
+    animation: slideInTitle 1s forwards; /* 1s là thời gian của hiệu ứng */
 }
