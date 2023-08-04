@@ -3,10 +3,23 @@
     padding: 0;
     box-sizing: border-box;
 }
-.imgchinh {
-    height: 400px;
-    width: 350px;
+.zoom {
+    position: relative;
+    overflow: hidden;
 }
+
+/* CSS for the image */
+.imgchinh {
+    width: 450px;
+    height: 450px;
+    transition: transform 0.3s ease;
+}
+
+/* CSS for the zoom effect when the user hovers over the image */
+.zoom:hover .imgchinh {
+    transform: scale(1.5);
+}
+
 .imgphu {
     height: 100px;
     width: 100px;
@@ -20,6 +33,48 @@
     width: auto;
 }
 .imgdtproduct{
-    height: 150px;
-    width: 150px;
+    width: 250px;
+    height: 300px;
+    transition: transform 0.3s ease;
 }
+.imgcontainer{
+    overflow: hidden;
+}
+.zoom:hover .imgdtproduct {
+    transform: scale(1.5);
+}
+
+@keyframes slideInFormLeft {
+    0%{
+        transform: translateX(-50%);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+@keyframes slideInFormRight {
+    0%{
+        transform: translateY(-50%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+@keyframes slideInFormUnder {
+    0%{
+        transform: translateY(50%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+.animated-slide-left {
+    animation: slideInFormLeft 1s forwards; /* 1s là thời gian của hiệu ứng */
+}
+.animated-slide-right {
+    animation: slideInFormRight 1s forwards; /* 1s là thời gian của hiệu ứng */
+}
+.animated-slide-under {
+    animation: slideInFormUnder 1s forwards; /* 1s là thời gian của hiệu ứng */
+}
+

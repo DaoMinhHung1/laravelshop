@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="/Frontend/css/home.css">
 </head>
+
 <body>
     @include('Frontend.Component.Header')
     <!-- Ảnh  -->
@@ -33,9 +34,11 @@
         </div>
         <div class="row justify-content-center animated-slide-product">
             @foreach($products as $product)
-            <div class="col-2">
-                <div class="card">
-                    <img src="{{('/storage/images/' . $product->imgproduct)}}" class="img" alt="Minh Hung">
+            <div class="col-2 me-5 mt-3">
+                <div class="card cardhome  zoom-card">
+                    <div class="img-container">
+                        <img src="{{('/storage/images/' . $product->imgproduct)}}" class="imgchinhsp" alt="">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title"><strong>{{$product->nameproduct}}</strong></h5>
                         <p class="card-text">{{$product->category->name}}</p>
@@ -65,7 +68,7 @@
                 autoplay: true,
                 autoplayTimeout: 2000,
                 autoplayHoverPause: true,
-             // Hiển thị 3 ảnh trên một slide
+                // Hiển thị 3 ảnh trên một slide
             });
         });
     </script>

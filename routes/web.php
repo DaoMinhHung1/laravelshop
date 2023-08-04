@@ -45,11 +45,9 @@ Route::get('/home', [HomeUserController::class, 'home'])->name('home');
 // Layout User Trang Chu
 
 // Layout Sản Phẩm
-Route::get('/quanao', [HomeUserController::class, 'spquanao'])->name('home.quanao');
-Route::get('/aokhoac', [HomeUserController::class, 'spaokhoac'])->name('home.aokhoac');
-Route::get('/giay', [HomeUserController::class, 'spgiay'])->name('home.giay');
-Route::get('/phukien', [HomeUserController::class, 'spphukien'])->name('home.phukien');
+Route::get('/sanpham/{category}', [HomeUserController::class, 'sanpham'])->name('home.quanao');
 Route::get('/chitietsp/{id}', [HomeUserController::class, 'chitietsp'])->name('home.chitietsp');
+
 // Layout Sản Phẩm
 
 // Layout Giới Thiệu, Liên Hệ

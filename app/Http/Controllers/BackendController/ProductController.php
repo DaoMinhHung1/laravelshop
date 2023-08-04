@@ -15,25 +15,25 @@ class ProductController extends Controller
     {
         $categoryId = 1;
         $products = Product::where('category_id', $categoryId)->get();
-        return view('Backend.Layout.Product.QuanLyQuanAo', compact('products'));
+        return view('Backend.Layout.Product.QuanLySanPham', compact('products'));
     }
     public function aokhoac()
     {
         $categoryId = 2;
         $products = Product::where('category_id', $categoryId)->get();
-        return view('Backend.Layout.Product.QuanLyAoKhoac', compact('products'));
+        return view('Backend.Layout.Product.QuanLySanPham', compact('products'));
     }
     public function giay()
     {
         $categoryId = 3;
         $products = Product::where('category_id', $categoryId)->get();
-        return view('Backend.Layout.Product.QuanLyGiay', compact('products'));
+        return view('Backend.Layout.Product.QuanLySanPham', compact('products'));
     }
     public function phukien()
     {
         $categoryId = 4;
         $products = Product::where('category_id', $categoryId)->get();
-        return view('Backend.Layout.Product.QuanLyPhuKien', compact('products'));
+        return view('Backend.Layout.Product.QuanLySanPham', compact('products'));
     }
 
     public function adddt()

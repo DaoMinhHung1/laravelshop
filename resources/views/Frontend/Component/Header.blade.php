@@ -31,11 +31,10 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Danh Mục Sản Phẩm
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="{{route('home.quanao')}}">Quần Áo</a></li>
-                            <li><a class="dropdown-item" href="{{route('home.aokhoac')}}">Áo Khoác</a></li>
-                            <li><a class="dropdown-item" href="{{route('home.giay')}}">Giày</a></li>
-                            <li><a class="dropdown-item" href="{{route('home.phukien')}}">Phụ Kiện</a></li>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> 
+                        @foreach($categories as $ct)
+                            <li><a class="dropdown-item" href="/sanpham/{{$ct->name}}">{{$ct->name}}</a></li>
+                          @endforeach
                             <!-- Thêm các mục sản phẩm khác vào đây -->
                         </ul>
                     </li>
