@@ -10,7 +10,7 @@
 
 <body>
     @include('Frontend.Component.Header', ['categories' => $categories])
-    <div class="container">
+    <div class="container mt-3">
         <div class="row">
             <div class="col">
                 <h3 class="titletrendinghome mt-3">Tất cả sản phẩm {{$title}}</h3>

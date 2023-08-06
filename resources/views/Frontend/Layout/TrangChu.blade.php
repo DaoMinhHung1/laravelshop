@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    @include('Frontend.Component.Header')
+@include('Frontend.Component.Header')
     <!-- Ảnh  -->
     <div class="container-fluid top">
         <div class="row">
@@ -21,6 +21,7 @@
                     <img src="/Frontend/img/anhshop.jpg" class="img-fluid  item" alt="">
                     <img src="/Frontend/img/anhshop.jpg" class="img-fluid  item" alt="">
                 </div>
+                <div class="owl-dots"></div>
             </div>
         </div>
     </div>
@@ -32,9 +33,9 @@
                 <p class="ptitle">Top trending tuần này</p>
             </div>
         </div>
-        <div class="row justify-content-center animated-slide-product">
+        <div class="row canhsanphamtrangchu animated-slide-product">
             @foreach($products as $product)
-            <div class="col-2 me-5 mt-3">
+            <div class="col-sm-1 col-md-4 col-lg-2 ms-5 me-5 mt-3 canhsanphamtrangchu">
                 <div class="card cardhome  zoom-card">
                     <div class="img-container">
                         <img src="{{('/storage/images/' . $product->imgproduct)}}" class="imgchinhsp" alt="">
@@ -63,7 +64,7 @@
             $('.owl-carousel').owlCarousel({
                 loop: true,
                 margin: 10,
-                nav: true,
+                nav: false,
                 items: 1,
                 autoplay: true,
                 autoplayTimeout: 2000,

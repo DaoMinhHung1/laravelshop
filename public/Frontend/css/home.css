@@ -56,7 +56,7 @@ Header {
 }
 
 .card{
-    height: 480px;
+    height: 400px;
     width: 250px;
 }
 .card-body{
@@ -102,7 +102,7 @@ Header {
 /* CSS for the image */
 .imgchinhsp {
     width: 250px;
-    height: 300px;
+    height: 200px;
     transition: transform 0.3s ease;
 }
 
@@ -110,13 +110,21 @@ Header {
 .zoom-card:hover .imgchinhsp {
     transform: scale(1.5); /* Adjust the scale factor as per your requirement */
 }
-
-
-
-
-
-
-
+.logo{
+    height: 100px;
+}
+.marginheadercenter{
+    margin-left: 100px;
+}
+.phantimkiem{
+    display: flex;
+}
+.inputtk{
+    width: 150px;
+}
+.iconshopping{
+    margin-top: 10px;
+}
 
 @keyframes slideInImgBanner {
     0%{
@@ -150,4 +158,12 @@ Header {
 }
 .animated-slide-title {
     animation: slideInTitle 1s forwards; /* 1s là thời gian của hiệu ứng */
+}
+
+
+.canhsanphamtrangchu{
+    margin-left: -8px;
+}
+.custom-icon {
+    font-size: 24px; /* Thay 24px bằng kích thước bạn muốn */
 }

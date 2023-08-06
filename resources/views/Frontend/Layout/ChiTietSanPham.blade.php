@@ -26,7 +26,9 @@
                     <p><strong>Trạng thái:</strong><span>{{$product->statusproduct}}</span></p>
                     <p><strong>Danh mục:</strong><span>{{$product->category->name}}</span></p>
                     <p><strong>Giá tiền:</strong><span> {{$product->priceproduct}}Vnd</span></p>
-                    <button class="button">Đặt hàng</button>
+                    <form action="{{route('home.themsanpham', ['id' => $product->id])}}">
+                        <button class="button">Mua Ngay</button>
+                    </form>
             </div>
         </div>
     </div>

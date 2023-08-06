@@ -37,11 +37,22 @@
     height: 300px;
     transition: transform 0.3s ease;
 }
+.imgproductt{
+    width: 100px;
+    height: 100px;
+}
 .imgcontainer{
     overflow: hidden;
 }
 .zoom:hover .imgdtproduct {
     transform: scale(1.5);
+}
+.imggiohang{
+    height: 70px;
+    width: 70px;
+}
+.tablegiohang{
+    margin-top: 10px;
 }
 
 @keyframes slideInFormLeft {

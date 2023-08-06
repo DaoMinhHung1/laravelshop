@@ -62,7 +62,6 @@ class ProductController extends Controller
             if (in_array($imageFile->getMimeType(), $validMimeTypes)) {
                 $ext = $request->imgproduct->extension();
                 $imgext = time() . '.' . $ext;
-
                 // Lưu file ảnh vào đường dẫn public/images
                 $imagePath = $imageFile->storeAs('public/images', $imgext);
                 $product->imgproduct = $imgext; // Lưu tên ảnh vào cơ sở dữ liệu

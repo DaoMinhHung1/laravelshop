@@ -47,10 +47,13 @@ Route::get('/home', [HomeUserController::class, 'home'])->name('home');
 // Layout Sản Phẩm
 Route::get('/sanpham/{category}', [HomeUserController::class, 'sanpham'])->name('home.quanao');
 Route::get('/chitietsp/{id}', [HomeUserController::class, 'chitietsp'])->name('home.chitietsp');
-
+Route::get('/giohang/{id}', [HomeUserController::class, 'giohang'])->name('home.themsanpham');
+Route::get('/xemgiohang', [HomeUserController::class, 'xemgiohang'])->name('home.xemgiohang');
+Route::delete('/giohang/{productId}', [HomeUserController::class, 'xoasanpham'])->name('home.xoagiohang');
+Route::get('/thanhtoan', [HomeUserController::class, 'thanhtoan'])->name('home.thanhtoan');
 // Layout Sản Phẩm
 
-// Layout Giới Thiệu, Liên Hệ
+// Layout Giới Thiệu, Liên Hệ, Giỏ Hàng
 Route::get('/gioithieu', [HomeUserController::class, 'gioithieu'])->name('home.gioithieu');
 Route::get('/gioithieu', [BaiVietLienQuan::class, 'baivietlienquan'])->name('home.gioithieu');
 Route::get('/lienhe', [HomeUserController::class, 'lienhe'])->name('home.lienhe');

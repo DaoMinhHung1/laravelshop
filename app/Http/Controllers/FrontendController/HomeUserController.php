@@ -20,75 +20,71 @@ class HomeUserController extends Controller
         $categoryInfo = Category::where('name', $category)->first();
         $categories = Category::all();
 
-        if($categoryInfo)
-        {
+        if ($categoryInfo) {
             $categoryId = $categoryInfo->id;
             $product = Product::where('category_id', $categoryId)->get();
-        } else 
-        {
+        } else {
             $product = [];
         }
         $title = $categoryInfo->name;
 
-          // Sử dụng withCount để tính số lượng sản phẩm của mỗi loại
-          $categoriesWithCount = Category::withCount('products')->get();
-        
-          // Tạo mảng lưu trữ số lượng sản phẩm của từng loại
-          $productCountByCategory = $categoriesWithCount->pluck('products_count', 'id')->toArray();
+        // Sử dụng withCount để tính số lượng sản phẩm của mỗi loại
+        $categoriesWithCount = Category::withCount('products')->get();
+
+        // Tạo mảng lưu trữ số lượng sản phẩm của từng loại
+        $productCountByCategory = $categoriesWithCount->pluck('products_count', 'id')->toArray();
 
 
         return view("Frontend.Layout.SanPham", compact('product', 'title', 'categories', 'productCountByCategory', 'categoriesWithCount'));
     }
-    // public function spaokhoac()
-    // {
-    //     $categoryId = 2;
-    //     $product = Product::where('category_id', $categoryId)->get();
-    //     return view("Frontend.Layout.SanPham", compact('product'));
-    // }
-    // public function spgiay()
-    // {
-    //     $categoryId = 3;
-    //     $product = Product::where('category_id', $categoryId)->get();
-    //     $totalQuantity = $product->count();
-    //     return view("Frontend.Layout.SanPham", compact('product'));
-    // }
-    // public function spphukien()
-    // {
-    //     $categoryId = 4;
-    //     $product = Product::where('category_id', $categoryId)->get();
-    //     $totalQuantity = $product->count();
-    //     return view("Frontend.Layout.SanPham", compact('product'));
-    // }
-    // public function index()
-    // {
-    //     $categoryId = 1;
-    //     // Lấy danh sách sản phẩm quần áo từ database
-    //     $quanaoProducts = Product::where('category_id', $categoryId)->get();
-    //     $quanaoTotalQuantity = $quanaoProducts->count();
-
-    //     $categoryId = 2;
-    //     // Lấy danh sách sản phẩm áo khoác từ database
-    //     $aokhoacProducts = Product::where('category_id', $categoryId)->get();
-    //     $aokhoacTotalQuantity = $aokhoacProducts->count();
-
-    //     $categoryId= 3;
-    //     // Lấy danh sách sản phẩm giày từ database
-    //     $giayProducts = Product::where('category_id', $categoryId)->get();
-    //     $giayTotalQuantity = $giayProducts->count();
-
-    //     $categoryId = 4;
-    //     // Lấy danh sách sản phẩm phụ kiện từ database
-    //     $phukienProducts = Product::where('category_id', $categoryId)->get();
-    //     $phukienTotalQuantity = $phukienProducts->count();
-
-    //     // Trả về view và truyền các biến dữ liệu vào view
-    //     return view('Frontend.Layout.SanPham', compact('quanaoTotalQuantity', 'aokhoacTotalQuantity', 'giayTotalQuantity', 'phukienTotalQuantity'));
-    // }
     public function chitietsp($id)
     {
         $product = Product::findOrFail($id);
         $category = Category::all();
         return view("Frontend.Layout.ChiTietSanPham", compact('product', 'category'));
+    }
+
+    public function giohang(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+
+        $cart = session()->get('cart', []);
+
+            $cart[$id] = [
+                'id' => $product->id,
+                'name' => $product->nameproduct,
+                'price' => $product->priceproduct,
+                'img' =>  $product->imgproduct,
+                'quantity' => 1,
+            ];
+            
+        session()->put('cart', $cart); // Lưu thông tin giỏ hàng vào session
+
+        return view("Frontend.Layout.GioHangSanPham", compact('cart', 'product'));
+    }
+
+    public function xemgiohang()
+    {
+        $cart = session()->get('cart', []);
+        return view("Frontend.Layout.GioHangSanPham", compact('cart'));
+    }
+
+    public function xoasanpham($id)
+    {
+        $cart = session()->get('cart', []);
+    
+        if (isset($cart[$id])) {
+            unset($cart[$id]);
+            session()->put('cart', $cart); // Cập nhật lại thông tin giỏ hàng sau khi xóa sản phẩm
+        }
+    
+        return redirect()->route('home.xemgiohang')->with('success', 'Sản phẩm đã được xóa khỏi giỏ hàng.');
+    }
+
+    public function thanhtoan()
+    {
+        $cart = session()->get('cart', []);
+        return view('Frontend.Layout.ThanhToan', compact('cart'));
     }
 
     public function gioithieu()
@@ -99,10 +95,5 @@ class HomeUserController extends Controller
     public function lienhe()
     {
         return view('Frontend.Layout.LienHe');
-    }
-
-    public function map()
-    {
-        return view('Frontend.Layout.minimap');
     }
 }

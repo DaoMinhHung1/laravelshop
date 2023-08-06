@@ -1,6 +1,6 @@
 @include('Frontend.Component.Header');
 <link rel="stylesheet" href="/Frontend/css/gioithieu.css">
-<div class="container">
+<div class="container mt-2">
     <div class="row">
         <div class="col-8 animated-slide-left">
             Như ý nghĩa của tên gọi, trang phục của Routine hướng đến việc trở thành thói quen, 
@@ -20,6 +20,7 @@
             Routine hiện có hệ thống 27 cửa hàng tại TP.HCM, Hà Nội, Hải phòng, Đà Nẵng, Kiên Giang và Vũng Tàu. Thương hiệu thường xuyên ra mắt bộ sưu tập riêng, bắt kịp xu hướng thời trang quốc tế.
         </div>
         <div class="col-4 custom-border animated-slide-right">
+            <h5>SẢN PHẨM MỚI</h5>
             @foreach($product as $pd)
             <div>
                 <img class="imgbaivietlq" src="{{('/storage/images/'. $pd->imgproduct)}}" alt="">

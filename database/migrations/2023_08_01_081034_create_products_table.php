@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
             $table->string('desproduct');
             $table->unsignedBigInteger('category_id');
             $table->timestamps();
-            $table->foreign('category_id')->references('id')->on('categories'); // Khóa ngoại liên kết tới bảng categories
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 
