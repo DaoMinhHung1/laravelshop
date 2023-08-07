@@ -33,19 +33,22 @@
         </div>
         <div class="col-6">
             <div class="border border-2">
-                <h3 class="text-center">Thanh toán</h3>
-                <p class="d-flex justify-content-center">
-                    <input class="form-control w-50 text-center" type="text" placeholder="Họ và tên...">
-                </p>
-                <p class="d-flex justify-content-center">
-                    <input class="form-control w-50 text-center" type="text" placeholder="Số điện thoại..">
-                </p>
-                <p class="d-flex justify-content-center">
-                    <input class="form-control w-50 text-center" type="text" placeholder="Địa chỉ...">
-                </p>
-                <div class="text-center mb-5">
-                    <button class="btn btn-success">Đặt hàng</button>
-                </div>
+                <form action="{{route('home.tinhtienbill')}}" method="POST">
+                    @csrf
+                    <h3 class="text-center">Thanh toán</h3>
+                    <p class="d-flex justify-content-center">
+                        <input class="form-control w-50 text-center" name="nameuser" type="text" placeholder="Họ và tên... " required>
+                    </p>
+                    <p class="d-flex justify-content-center">
+                        <input class="form-control w-50 text-center" name="phoneuser" type="text" placeholder="Số điện thoại.." required>
+                    </p>
+                    <p class="d-flex justify-content-center">
+                        <input class="form-control w-50 text-center" name="addressuser" type="text" placeholder="Địa chỉ..." required>
+                    </p>
+                    <div class="text-center mb-5">
+                        <button type="submit" class="btn btn-success">Đặt hàng</button>
+                    </div>
+                </form>
             </div>
 
 

@@ -41,6 +41,27 @@
             </div>
         </div>
     </div>
+    <br>
+    <div class="container">
+        <div class="row">
+            <h5>SẢN PHẨM TƯƠNG TỰ</h5>
+            <hr>
+            @foreach($producttt as $pd) <!-- Assuming $similarProducts is an array/collection of products -->
+            <div class="col-3">
+                <div class="card zoom-card">
+                    <div class="img-container">
+                        <img src="{{('/storage/images/' . $pd->imgproduct)}}" class="imgchinhsp" alt="">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>{{$pd->nameproduct}}</strong></h5>
+                        <p class="card-text">{{$pd->category->name}}</p>
+                        <p class="giatien">{{$pd->priceproduct}} <span>K</span></p>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
     @include('Frontend.Component.Footter')
     <!-- <script src="/Frontend/js/chitietsp.js"></script> -->
 </body>

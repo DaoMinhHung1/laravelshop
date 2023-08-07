@@ -1,6 +1,6 @@
 @include('Frontend.Component.Header')
 <link href="/Frontend/css/chitietsp.css" rel="stylesheet" />
-<div class="container">
+<div class="container mt-2">
     <div class="row">
         <div class="col d-flex mt-3">
             <span>

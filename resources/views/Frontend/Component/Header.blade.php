@@ -66,7 +66,7 @@
     </nav>
 </section>
 
-<nav class="navbar bg-body-tertiary fixed-top d-md-none mt-5 bg-light">
+<nav class="navbar bg-body-tertiary fixed-top d-sm-none mt-5 bg-light">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon">
@@ -87,7 +87,7 @@
                 </form>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('home')}}">Trang chủ</a>
+                        <a class="nav-link" href="{{route('home')}}">Trang Chủ</a>
                     </li>
                     <li class="nav-item dropdown" id="dropdownMenu">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -97,6 +97,7 @@
                             @foreach($categories as $ct)
                             <li><a class="dropdown-item" href="/sanpham/{{$ct->name}}">{{$ct->name}}</a></li>
                             @endforeach
+                            <!-- Thêm các mục sản phẩm khác vào đây -->
                         </ul>
                     </li>
                     <li class="nav-item">

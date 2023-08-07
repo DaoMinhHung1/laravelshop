@@ -51,12 +51,14 @@ Route::get('/giohang/{id}', [HomeUserController::class, 'giohang'])->name('home.
 Route::get('/xemgiohang', [HomeUserController::class, 'xemgiohang'])->name('home.xemgiohang');
 Route::delete('/giohang/{productId}', [HomeUserController::class, 'xoasanpham'])->name('home.xoagiohang');
 Route::get('/thanhtoan', [HomeUserController::class, 'thanhtoan'])->name('home.thanhtoan');
+Route::post('/thanhtoan', [HomeUserController::class, 'tinhtienbill'])->name('home.tinhtienbill');
 // Layout Sản Phẩm
 
 // Layout Giới Thiệu, Liên Hệ, Giỏ Hàng
 Route::get('/gioithieu', [HomeUserController::class, 'gioithieu'])->name('home.gioithieu');
 Route::get('/gioithieu', [BaiVietLienQuan::class, 'baivietlienquan'])->name('home.gioithieu');
 Route::get('/lienhe', [HomeUserController::class, 'lienhe'])->name('home.lienhe');
+Route::post('/lienhe', [HomeUserController::class, 'guilienhe'])->name('home.guilienhe');
 // Layout Giới Thiệu, Liên Hệ
 
 Auth::routes();
