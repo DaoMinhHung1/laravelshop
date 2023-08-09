@@ -44,7 +44,8 @@ class ProductController extends Controller
     public function addProduct(Request $request)
     {
         $request->validate([
-            'imgproduct' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048', // Kiểm tra loại và kích thước ảnh
+            'imgproduct' => 'array', // Sửa thành validation array
+            'imgproduct.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048', // Thêm wildcard *
         ]);
 
         $product = new Product;
@@ -52,36 +53,40 @@ class ProductController extends Controller
         $product->nameproduct = $request->input('nameproduct');
         $product->priceproduct = $request->input('priceproduct');
         $product->statusproduct = $request->input('statusproduct');
-        $product->imgproduct = 'default.jpg';
         $product->desproduct = $request->input('desproduct');
+        $product->substance = $request->input('substance');
 
-        if ($request->hasFile('imgproduct') && $request->file('imgproduct')->isValid()) {
-            $validMimeTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-            $imageFile = $request->file('imgproduct');
 
-            if (in_array($imageFile->getMimeType(), $validMimeTypes)) {
-                $ext = $request->imgproduct->extension();
-                $imgext = time() . '.' . $ext;
-                // Lưu file ảnh vào đường dẫn public/images
-                $imagePath = $imageFile->storeAs('public/images', $imgext);
-                $product->imgproduct = $imgext; // Lưu tên ảnh vào cơ sở dữ liệu
-            } else {
-                // Xử lý trường hợp định dạng file không hợp lệ
-                // Ví dụ: thông báo lỗi, không lưu ảnh, gán ảnh mặc định, v.v.
+
+
+        $uploadedImages = [];
+
+        if ($request->hasFile('imgproduct')) {
+            foreach ($request->file('imgproduct') as $imageFile) {
+                if ($imageFile->isValid()) {
+                    $ext = $imageFile->extension();
+                    $imgext = time() .  uniqid() . '.' . $ext;
+
+                    // Lưu file ảnh vào đường dẫn public/images/products
+                    $imagePath = $imageFile->storeAs('public/images/products', $imgext);
+
+                    $uploadedImages[] = $imgext; // Lưu tên ảnh vào mảng
+                }
             }
-        } else {
-            // Xử lý trường hợp không có hoặc không hợp lệ file ảnh
-            // Ví dụ: gán ảnh mặc định
         }
+        
+
+        // Chuyển mảng tên ảnh thành chuỗi JSON và lưu vào cột imgproduct
+        $product->imgproduct = json_encode($uploadedImages);
 
         $category_id = $request->input('category');
-
-        // Gán giá trị danh mục vào cột "category_id"
         $product->category_id = $category_id;
 
-        $product->save();
+        $product->save();       
         return redirect()->route('quanao.show');
     }
+
+
     public function editProduct($id)
     {
         $categories = Category::all();
@@ -92,7 +97,8 @@ class ProductController extends Controller
     {
 
         $request->validate([
-            'imgproduct' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048', // Kiểm tra loại và kích thước ảnh
+            'imgproduct' => 'array', // Sửa thành validation array
+            'imgproduct.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048', // Thêm wildcard *
         ]);
 
         $product = Product::findOrFail($id);
@@ -101,34 +107,43 @@ class ProductController extends Controller
         $product->priceproduct = $request->input('priceproduct');
         $product->statusproduct = $request->input('statusproduct');
         $product->desproduct = $request->input('desproduct');
+        $product->substance = $request->input('substance');
 
-        if ($request->hasFile('imgproduct') && $request->file('imgproduct')->isValid()) {
-            // Có ảnh mới được gửi lên
-            $validMimeTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-            $imageFile = $request->file('imgproduct');
 
-            if (in_array($imageFile->getMimeType(), $validMimeTypes)) {
-                $ext = $request->imgproduct->extension();
-                $imgext = time() . '.' . $ext;
+        $uploadedImages = [];
 
-                // Lưu file ảnh vào đường dẫn public/images
-                $imagePath = $imageFile->storeAs('public/images', $imgext);
+        if ($request->hasFile('imgproduct')) {
+            foreach ($request->file('imgproduct') as $imageFile) {
+                if ($imageFile->isValid()) {
+                    $ext = $imageFile->extension();
+                    $imgext = time() .  uniqid() . '.' . $ext;
 
-                // Xóa ảnh cũ nếu có (trừ ảnh mặc định nếu có)
-                if ($product->imgproduct !== 'default.jpg') {
-                    File::delete(storage_path('app/public/images/' . $product->imgproduct));
+                    // Lưu file ảnh vào đường dẫn public/images/products
+                    $imagePath = $imageFile->storeAs('public/images/products', $imgext);
+                    $uploadedImages[] = $imgext; // Lưu tên ảnh vào mảng
                 }
-
-                $product->imgproduct = $imgext; // Lưu tên ảnh mới vào cơ sở dữ liệu
-            } else {
-                // Xử lý trường hợp định dạng file không hợp lệ
-                // Ví dụ: thông báo lỗi, giữ nguyên ảnh cũ, v.v.
             }
         }
+        if (!empty($uploadedImages)) {
+            // Xóa ảnh cũ nếu có
+            if (!empty($product->imgproduct)) {
+                $oldImages = json_decode($product->imgproduct);
+                foreach ($oldImages as $oldImage) {
+                    File::delete(storage_path('app/public/images/products/' . $oldImage));
+                }
+            }
+        
+            // Chuyển mảng tên ảnh thành chuỗi JSON và lưu vào cột imgproduct
+            $product->imgproduct = json_encode($uploadedImages);
+        }
+
+        // Chuyển mảng tên ảnh thành chuỗi JSON và lưu vào cột imgproduct
+        $product->imgproduct = json_encode($uploadedImages);
 
         $category_id = $request->input('category');
-        $product->category_id = $category_id;
 
+        // Gán giá trị danh mục vào cột "category_id"
+        $product->category_id = $category_id;
 
         $product->save();
         return redirect()->route('quanao.show');

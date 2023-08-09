@@ -17,9 +17,17 @@
         <div class="row">
             <div class="col-12 p-0 animated-slide-banner">
                 <div class="owl-carousel">
-                    <img src="/Frontend/img/anhshop.jpg" class="img-fluid  item" alt="">
-                    <img src="/Frontend/img/anhshop.jpg" class="img-fluid  item" alt="">
-                    <img src="/Frontend/img/anhshop.jpg" class="img-fluid  item" alt="">
+                    <div class="item">
+                        <img src="/Frontend/img/anhshop.jpg" class="img-fluid  item" alt="">
+                    </div>
+                    <div class="item">
+                        <img src="/Frontend/img/anhshop.jpg" class="img-fluid  item" alt="">
+                    </div>
+                    <div class="item">
+                        <img src="/Frontend/img/anhshop.jpg" class="img-fluid  item" alt="">
+                    </div>
+
+
                 </div>
                 <div class="owl-dots"></div>
             </div>
@@ -35,12 +43,15 @@
             @foreach($products as $index => $product)
             @if($index % 3 == 0)
         </div>
-        <div class="row canhsanphamtrangchu animated-slide-product justify-content-center">
+        <div class="row  animated-slide-product justify-content-center">
             @endif
             <div class="col-sm-1 col-md-4 col-lg-3 mt-3 canhsanphamtrangchu">
-                <div class="card cardhome  zoom-card">
+                <div class="card zoom-card">
                     <div class="img-container">
-                        <img src="{{('/storage/images/' . $product->imgproduct)}}" class="imgchinhsp" alt="">
+                        <?php
+                        $imgpd = json_decode($product->imgproduct) 
+                        ?>
+                        <img src="{{('/storage/images/products/' . $imgpd[0])}}" class="imgchinhsp" alt="">
                     </div>
                     <div class="card-body">
                         <h5 class="card-title"><strong>{{$product->nameproduct}}</strong></h5>
@@ -68,7 +79,12 @@
                 loop: true,
                 margin: 10,
                 nav: false,
-                items: 1,
+                dots: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    }
+                },
                 autoplay: true,
                 autoplayTimeout: 2000,
                 autoplayHoverPause: true,

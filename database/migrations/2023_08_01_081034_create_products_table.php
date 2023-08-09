@@ -18,9 +18,10 @@ class CreateProductsTable extends Migration
             $table->string('maproduct');
             $table->string('nameproduct');
             $table->integer('priceproduct');
-            $table->string('imgproduct');
+            $table->json('imgproduct')->nullable();
             $table->string('statusproduct');
             $table->string('desproduct');
+            $table->string('substance');
             $table->unsignedBigInteger('category_id');
             $table->timestamps();
             $table->foreign('category_id')->references('id')->on('categories');

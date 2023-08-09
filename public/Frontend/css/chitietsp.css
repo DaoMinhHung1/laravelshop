@@ -10,19 +10,18 @@
 
 /* CSS for the image */
 .imgchinh {
-    width: 450px;
-    height: 450px;
+    width: 400px;
+    height: 400px;
     transition: transform 0.3s ease;
 }
 
 /* CSS for the zoom effect when the user hovers over the image */
-.zoom:hover .imgchinh {
-    transform: scale(1.5);
-}
+
 
 .imgphu {
     height: 100px;
     width: 100px;
+    margin-left: 7px;
 }
 .container1 {
     height: 500px;
@@ -88,4 +87,5 @@
 .animated-slide-under {
     animation: slideInFormUnder 1s forwards; /* 1s là thời gian của hiệu ứng */
 }
+
 

@@ -10,7 +10,7 @@ class Product extends Model
     use HasFactory;
     protected $table = 'products';
 
-    protected $fillable = ['maproduct', 'nameproduct', 'priceproduct', 'imgproduct', 'desproduct'];
+    protected $fillable = ['maproduct', 'nameproduct', 'imgproduct' , 'imgproduct1', 'imgproduct2', 'imgproduct2' ,'priceproduct','desproduct', 'quantityproduct',  'substance'];
 
 
     public function getMaProduct($maproduct)
@@ -49,6 +49,36 @@ class Product extends Model
         $this->attributes['imgproduct'] = ($imgproduct);
     }
 
+    public function getImgProduct1($imgproduct1)
+    {
+        return $imgproduct1;
+    }
+    public function setImgProduct1($imgproduct1)
+    {
+        $this->attributes['imgproduct1'] = ($imgproduct1);
+    }
+
+    
+    public function getImgProduct2($imgproduct2)
+    {
+        return $imgproduct2;
+    }
+    public function setImgProduct2($imgproduct2)
+    {
+        $this->attributes['imgproduct2'] = ($imgproduct2);
+    }
+
+    
+    public function getImgProduct3($imgproduct3)
+    {
+        return $imgproduct3;
+    }
+    public function setImgProduct3($imgproduct3)
+    {
+        $this->attributes['imgproduct3'] = ($imgproduct3);
+    }
+
+
     public function getDesProduct($desproduct)
     {
         return $desproduct;
@@ -57,6 +87,27 @@ class Product extends Model
     {
         $this->attributes['desproduct'] = ($desproduct);
     }
+
+
+    public function getQuantity($quantityproduct)
+    {
+        return $quantityproduct;
+    }
+    public function setQuantity($quantityproduct)
+    {
+        $this->attributes['quantityproduct'] = ($quantityproduct);
+    }
+
+    
+    public function getSubstance($substance)
+    {
+        return $substance;
+    }
+    public function setSubstance($substance)
+    {
+        $this->attributes['substance'] = ($substance);
+    }
+
 
     public function category()
     {

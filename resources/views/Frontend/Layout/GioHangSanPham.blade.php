@@ -27,6 +27,7 @@
                         <th>Giá</th>
                         <th>Ảnh</th>
                         <th>Số lượng</th>
+                        <th>Size</th>
                         <th>Xóa</th>
                     </tr>
                 </thead>
@@ -37,13 +38,10 @@
                         <td>{{$item['name']}}</td>
                         <td>{{$item['price']}}</td>
                         <td>
-                            @if(isset($item['img']))
-                            <img class="imggiohang" src="{{ asset('storage/images/' . $item['img']) }}" alt="">
-                            @else
-                            Không có ảnh
-                            @endif
-                        </td>
+            <img class="imggiohang" src="{{ asset('storage/images/products/' . $item['img']) }}" alt="">    
+        </td>
                         <td>{{$item['quantity']}}</td>
+                        <td>{{$item['size']}}</td>
                         <td>
                             <form action="{{ route('home.xoagiohang', ['productId' => $productId]) }}" method="post">
                                 @csrf

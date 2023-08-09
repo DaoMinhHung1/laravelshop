@@ -62,13 +62,13 @@
         <div class="row">
             <div class="col-2 listdanhmuc">
                 <ul class="list-group">
-                    <a href="">
+                    <a href="/admin">
                         <li class="list-group-item">Trang chủ</li>
                     </a>
                     <li class="list-group-item dropdown">
                         <!-- Dropdown trigger button -->
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Quản lý
+                            Sản Phẩm
                         </a>
                         <!-- Dropdown menu -->
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -76,8 +76,22 @@
                             <a class="dropdown-item" href="/showak">Quản lý Áo Khoác</a>
                             <a class="dropdown-item" href="/showg">Quản lý Giày</a>
                             <a class="dropdown-item" href="/showpk">Quản lý Phụ Kiện</a>
-                            <a class="dropdown-item" href="/add">Thêm</a>
+                            <a class="dropdown-item" href="/addpd">Thêm</a>
                         </div>
+                    </li>
+                    <li class="list-group-item dropdown">
+                        <!-- Dropdown trigger button -->
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Nhân Viên
+                        </a>
+                        <!-- Dropdown menu -->
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="/nhanvien">Quản lý Nhân Viên</a>
+                            <a class="dropdown-item" href="/addnhanvien">Thêm</a>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/thongke">Thống kê</a>
                     </li>
                     <a href="/home">
                         <li class="list-group-item">Quay về</li>

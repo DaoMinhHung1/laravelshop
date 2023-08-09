@@ -16,6 +16,7 @@ class CreateEmployeeTable extends Migration
         Schema::create('employee', function (Blueprint $table) {
             $table->id();
             $table->string('nameemploy');
+            $table->string('imgemploy');
             $table->integer('ageemploy');
             $table->integer('phoneemploy');
             $table->string('emailemploy');

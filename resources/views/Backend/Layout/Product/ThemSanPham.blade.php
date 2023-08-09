@@ -13,14 +13,34 @@
                     <label class="form-label">Mã Sản Phẩm</label>
                     <input name="maproduct" id="maproduct" class="form-control" required>
                 </div>
+
                 <div class="col-3">
                     <label class="form-label">Giá Sản Phẩm</label>
                     <input name="priceproduct" id="priceproduct" class="form-control" required>
                 </div>
+
+                <div class="col-3">
+                    <label class="form-label">Chất Liệu</label>
+                    <input name="substance" id="substance" class="form-control" required>
+                </div>
+
                 <div class="col-3">
                     <label class="form-label">Ảnh Sản Phẩm</label>
-                    <input name="imgproduct" id="imgproduct" type="file" class="form-control" required>
+                    <input name="imgproduct[]" type="file" class="form-control" multiple required>
                 </div>
+                <div class="col-3">
+                    <label class="form-label">Ảnh Sản Phẩm 1</label>
+                    <input name="imgproduct[]" type="file" class="form-control" multiple required>
+                </div>
+                <div class="col-3">
+                    <label class="form-label">Ảnh Sản Phẩm 2</label>
+                    <input name="imgproduct[]" type="file" class="form-control" multiple required>
+                </div>
+                <div class="col-3">
+                    <label class="form-label">Ảnh Sản Phẩm 3</label>
+                    <input name="imgproduct[]" type="file" class="form-control" multiple required>
+                </div>
+
                 <div class="col-3">
                     <label class="form-label">Tình trạng Sản Phẩm</label>
                     <select name="statusproduct" id="statusproduct" class="form-control" required>

@@ -20,8 +20,11 @@ class CreateBillTable extends Migration
             $table->string('phoneuser');
             $table->string('addressuser');
             $table->date('ngayhoadon');
-            $table->string('tongtien');
+            $table->integer('quantity');
+            $table->integer('tongtien');
+            $table->string('sizepd'); 
             $table->json('namepd')->nullable();
+            $table->json('imgpd')->nullable();
             $table->timestamps();
         });
     }

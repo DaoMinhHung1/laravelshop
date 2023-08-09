@@ -20,7 +20,7 @@
             <h5>SẢN PHẨM MỚI</h5>
             @foreach($product as $pd)
             <div>
-                <img class="imgbaivietlq" src="{{('/storage/images/'. $pd->imgproduct)}}" alt="">
+                <img class="imgbaivietlq" src="{{('/storage/images/products/'. $pd->imgproduct)}}" alt="">
                 <span>{{$pd->nameproduct}}</span>
             </div>
             @endforeach

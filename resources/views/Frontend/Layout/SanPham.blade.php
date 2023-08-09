@@ -31,9 +31,12 @@
             </div>
             @foreach($product as $pd)
             <div class="col-2 me-5 animated-slide-product">
-                <div class="card zoom">
-                    <div class="imgcontainer">
-                        <img class="imgdtproduct" src="{{ ('/storage/images/'. $pd->imgproduct)}}" alt="">
+                <div class="card zoom-card">
+                    <div class="img-container">
+                        <?php
+                        $imgpd = json_decode($pd->imgproduct);
+                        ?>
+                        <img class="imgchinhsp " src="{{ ('/storage/images/products/'. $imgpd[0])}}" alt="">
                     </div>
                     <div class="card-body">
                         <h5 class="card-title"><strong>{{$pd->nameproduct}}</strong></h5>

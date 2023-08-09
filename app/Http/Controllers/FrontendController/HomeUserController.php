@@ -55,20 +55,22 @@ class HomeUserController extends Controller
     public function giohang(Request $request, $id)
     {
         $product = Product::findOrFail($id);
-
+        $imgpd = json_decode($product->imgproduct);
+        $quantity = $request->input('quantity', 1);
+        $sizepd = $request->input('size');
         $cart = session()->get('cart', []);
-
         $cart[$id] = [
             'id' => $product->id,
             'name' => $product->nameproduct,
             'price' => $product->priceproduct,
-            'img' =>  $product->imgproduct,
-            'quantity' => 1,
+            'img' =>  $imgpd[0],
+            'size' =>  $sizepd,
+            'quantity' => $quantity,
         ];
 
         session()->put('cart', $cart); // Lưu thông tin giỏ hàng vào session
 
-        return view("Frontend.Layout.GioHangSanPham", compact('cart', 'product'));
+        return view("Frontend.Layout.GioHangSanPham", compact('cart', 'product', 'imgpd'));
     }
 
     public function xemgiohang()
@@ -96,15 +98,19 @@ class HomeUserController extends Controller
     }
     public function tinhtienbill(Request $request)
     {
-      
+
         $cart = session()->get('cart', []);
         $totalPrice = 0;
         $nameCartList = [];
+
         foreach ($cart as $item) {
             $totalPrice += $item['price'] * $item['quantity'];
             $nameCartList[] = $item['name'];
+            $imgCartList[] = $item['img'];
+            $quantitypd = $item['quantity'];
+            $sizepds = $item['size'];
         }
-       
+
         $ngayHoaDon = Carbon::now();
 
         $bill = new Bill;
@@ -114,12 +120,13 @@ class HomeUserController extends Controller
         $bill->addressuser = $request->input('addressuser');
         $bill->tongtien = $totalPrice;
         $bill->ngayhoadon = $ngayHoaDon;
+        $bill->quantity = $quantitypd;
+        $bill->sizepd = $sizepds;
         $bill->namepd = json_encode($nameCartList, JSON_UNESCAPED_UNICODE);
+        $bill->imgpd = json_encode($imgCartList, JSON_UNESCAPED_UNICODE);
         $bill->save();
         session()->forget('cart');
-
         return redirect()->route('home');
-
     }
 
     public function gioithieu()
@@ -143,5 +150,17 @@ class HomeUserController extends Controller
 
         $contact->save();
         return view('Frontend.Layout.LienHe');
+    }
+
+    public function thanhtoanthanhcong()
+    {
+        $bills = Bill::all();
+        return view('Frontend.Layout.DatHangThanhCong', compact('bills'));
+    }
+    public function xacnhandonhang($id)
+    {
+        $bill = Bill::findOrFail($id);
+        $bill->remove($id); // Truyền đối số $id vào hàm remove()
+        return redirect()->route('home');
     }
 }

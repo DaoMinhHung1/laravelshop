@@ -9,6 +9,7 @@
                         <th>Tên</th>
                         <th>Ảnh</th>
                         <th>Giá</th>
+                        <th>Size</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -17,14 +18,16 @@
                     <tr>
                         <td>{{$tt['name']}}</td>
                         <td>
-                            <img class="imggiohang" src="{{ ('storage/images/' . $tt['img']) }}" alt="">
+                            <img class="imggiohang" src="{{ ('storage/images/products/' . $tt['img']) }}" alt="">
                         </td>
                         <td>{{$tt['price']}}</td>
+                        <td>{{$tt['size']}}</td>
                     </tr>
                     <?php $total += $tt['price'] * $tt['quantity']; ?>
                     @endforeach
                 </tbody>
                 <tr>
+                    <td></td>
                     <td></td>
                     <td>Tổng tiền</td>
                     <td>{{$total}}</td>
@@ -50,8 +53,6 @@
                     </div>
                 </form>
             </div>
-
-
         </div>
     </div>
 </div>
