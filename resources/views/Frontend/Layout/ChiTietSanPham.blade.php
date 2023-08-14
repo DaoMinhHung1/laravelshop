@@ -9,9 +9,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-
 </head>
+
+<style>
+    .full-image-container {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+    }
+
+    .full-image {
+        max-width: 90%;
+        max-height: 90%;
+    }
+</style>
 
 <body>
     @include('Frontend.Component.Header')
@@ -19,18 +37,20 @@
         <div class="row">
             <div class="col-2"></div>
             <div class="col-4 mt-5 animated-slide-left">
-                    <?php
-                    $imgpd = json_decode($product->imgproduct); 
-                    ?>
-                    <img class="imgchinh" src="{{ asset('storage/images/products/' . $imgpd[0]) }}" alt="">
-                    
-                  <div class="mt-3">
-                      <img class="imgphu me-4" src="{{ asset('storage/images/products/' . $imgpd[1]) }}" alt="">
-                      <img class="imgphu me-4" src="{{ asset('storage/images/products/' . $imgpd[2]) }}" alt="">
-                      <img class="imgphu" src="{{ asset('storage/images/products/' . $imgpd[3]) }}" alt="">
-                  </div>
-                    
-            
+                <?php
+                $imgpd = json_decode($product->imgproduct);
+                ?>
+                <img class="imgchinh clickable-image" src="{{ asset('storage/images/products/' . $imgpd[0]) }}" alt="">
+
+                <div class="mt-3">
+                    <img class="imgphu me-4 clickable-image" src="{{ asset('storage/images/products/' . $imgpd[1]) }}" alt="">
+                    <img class="imgphu me-4 clickable-image" src="{{ asset('storage/images/products/' . $imgpd[2]) }}" alt="">
+                    <img class="imgphu clickable-image" src="{{ asset('storage/images/products/' . $imgpd[3]) }}" alt="">
+                </div>
+            </div>
+
+            <div class="full-image-container" id="fullImageContainer">
+                <img class="full-image" id="fullImage" src="" alt="">
             </div>
 
 
@@ -95,6 +115,23 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script>
+        const clickableImages = document.querySelectorAll('.clickable-image');
+        const fullImageContainer = document.getElementById('fullImageContainer');
+        const fullImage = document.getElementById('fullImage');
+
+        clickableImages.forEach(image => {
+            image.addEventListener('click', () => {
+                const imageUrl = image.getAttribute('src');
+                fullImage.setAttribute('src', imageUrl);
+                fullImageContainer.style.display = 'flex';
+            });
+        });
+
+        fullImageContainer.addEventListener('click', () => {
+            fullImageContainer.style.display = 'none';
+        });
+    </script>
 </body>
 
 </html>

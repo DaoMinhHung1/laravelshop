@@ -20,7 +20,10 @@
             <h5>SẢN PHẨM MỚI</h5>
             @foreach($product as $pd)
             <div>
-                <img class="imgbaivietlq" src="{{('/storage/images/products/'. $pd->imgproduct)}}" alt="">
+                <?php
+                $imgpd = json_decode($pd->imgproduct)
+                ?>
+                <img class="imgbaivietlq" src="{{ asset('storage/images/products/' . $imgpd[0]) }}" alt="">
                 <span>{{$pd->nameproduct}}</span>
             </div>
             @endforeach
