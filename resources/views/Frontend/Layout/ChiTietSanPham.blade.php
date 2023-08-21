@@ -35,7 +35,7 @@
     @include('Frontend.Component.Header')
     <div class="container container1 ">
         <div class="row">
-            <div class="col-2"></div>
+            <div class="col-1"></div>
             <div class="col-4 mt-5 animated-slide-left">
                 <?php
                 $imgpd = json_decode($product->imgproduct);
@@ -59,7 +59,8 @@
                     <p><strong>Trạng thái:</strong><span>{{$product->statusproduct}}</span></p>
                     <p><strong>Danh mục:</strong><span>{{$product->category->name}}</span></p>
                     <p><strong>Giá tiền:</strong><span> {{$product->priceproduct}}Vnd</span></p>
-                    <p><strong>Chất liệu:</strong><span> {{$product->substance}}Vnd</span></p>
+                    <p><strong>Chất liệu:</strong><span> {{$product->substance}}</span></p>
+                    <p><strong>Thiết kế:</strong> {{$product->desproduct}}</p>
                     <form action="{{route('home.themsanpham', ['id' => $product->id])}}">
                         @csrf
 
@@ -80,36 +81,54 @@
                     </form>
             </div>
         </div>
-    </div>
-    <br>
-    <div class="container container2 text-center">
-        <div class="row mt-5 mb-5 animated-slide-under">
-            <div class="col mt-5">
-                <h3 class="text-center mt-5">Mô tả sản phẩm</h3>
-                <p class="mt-5">{{$product->desproduct}}</p>
+        <div class="row animated-slide-under">
+            <div class="col-1"></div>
+            <div class="col-10 ">
+                <h3 class="mt-5">Mô tả sản phẩm</h3>
+                <p>Size S từ 42kg – 51kg , cao dưới 1m65</p>
+                <p>Size M từ 52kg – 68kg, cao dưới 1m7</p>
+                <p>Size L từ 69kg – 76kg, từ 1m70 – 1m79</p>
+                <p>Size XL từ 74kg – 90kg, từ 1m78 – 1m85</p>
+
+                <img style="height: 500px;" src="/Frontend/img/sizeao.jpg" alt="">
             </div>
+            <div class="col-1"></div>
         </div>
     </div>
-    <div class="container ">
-        <div class="row ">
-            <h5 class="mt-5">SẢN PHẨM TƯƠNG TỰ</h5>
 
-            @foreach($producttt as $pd) <!-- Assuming $similarProducts is an array/collection of products -->
-            <div class="col-3 mt-5">
-                <div class="card zoom-card">
-                    <div class="img-container">
-                        <img src="{{('/storage/images/' . $pd->imgproduct)}}" class="imgchinhsp" alt="">
+
+    <div class="container" style="margin-top: 900px;">
+        <div class="row">
+            <div class="col-1"></div>
+             <div class="col-10">
+                <h5 class="mt-5">SẢN PHẨM TƯƠNG TỰ</h5>
+                <div class="row">
+                    @foreach($producttt as $pd)
+                    <?php
+                    $imgpdtt = json_decode($pd->imgproduct);
+                    ?>
+                    <div class="col-3">
+                        <div class="card zoom-card">
+                            <div class="img-container">
+                                <img class="imgspthem clickable-image" src="{{ asset('storage/images/products/' . $imgpdtt[0]) }}" alt="">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><strong>{{$pd->nameproduct}}</strong></h5>
+                                <p class="card-text">{{$pd->category->name}}</p>
+                                <p class="giatien">{{$pd->priceproduct}} <span>K</span></p>
+                                <form action="{{ route('home.chitietsp', ['id' => $pd->id]) }}">
+                                    <button class="button">Mua</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title"><strong>{{$pd->nameproduct}}</strong></h5>
-                        <p class="card-text">{{$pd->category->name}}</p>
-                        <p class="giatien">{{$pd->priceproduct}} <span>K</span></p>
-                    </div>
+                    @endforeach
                 </div>
             </div>
-            @endforeach
+            <div class="col-1"></div>
         </div>
     </div>
+
     @include('Frontend.Component.Footter')
     <!-- <script src="/Frontend/js/chitietsp.js"></script> -->
 

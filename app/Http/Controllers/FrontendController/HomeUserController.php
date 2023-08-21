@@ -47,7 +47,7 @@ class HomeUserController extends Controller
         $category = Category::all();
         $producttt = Product::where('category_id', $categoryId)
             ->where('id', '!=', $id) // Loại bỏ sản phẩm hiện tại
-            ->take(9) // Số lượng sản phẩm tương tự hiển thị
+            ->take(4) // Số lượng sản phẩm tương tự hiển thị
             ->get();
         return view("Frontend.Layout.ChiTietSanPham", compact('product', 'category', 'producttt'));
     }
@@ -156,11 +156,5 @@ class HomeUserController extends Controller
     {
         $bills = Bill::all();
         return view('Frontend.Layout.DatHangThanhCong', compact('bills'));
-    }
-    public function xacnhandonhang($id)
-    {
-        $bill = Bill::findOrFail($id);
-        $bill->remove($id); // Truyền đối số $id vào hàm remove()
-        return redirect()->route('home');
     }
 }

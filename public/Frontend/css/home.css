@@ -39,7 +39,7 @@ Header {
     justify-content: center;
     margin-top: 15px;
 }
-.full-width-img {
+.item {
     width: 100%;
     height: auto;
   }

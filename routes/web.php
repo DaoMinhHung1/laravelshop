@@ -76,7 +76,7 @@ Route::delete('/giohang/{productId}', [HomeUserController::class, 'xoasanpham'])
 Route::get('/thanhtoan', [HomeUserController::class, 'thanhtoan'])->name('home.thanhtoan');
 Route::post('/thanhtoan', [HomeUserController::class, 'tinhtienbill'])->name('home.tinhtienbill');
 Route::get('/thanhtoanthanhcong', [HomeUserController::class, 'thanhtoanthanhcong'])->name('home.thanhtoanthanhcong');
-Route::post('/xacnhandonhang/{id}', [HomeUserController::class, 'xacnhandonhang'])->name('home.xacnhandonhang');
+Route::get('/hoadon', [HomeAdminController::class, 'hoadon']); 
 // Layout Giới Thiệu, Liên Hệ
 
 Auth::routes();

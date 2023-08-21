@@ -93,6 +93,9 @@
                     <li class="list-group-item">
                         <a href="/thongke">Thống kê</a>
                     </li>
+                    <li class="list-group-item">
+                        <a href="/hoadon">Hóa Đơn</a>
+                    </li>
                     <a href="/home">
                         <li class="list-group-item">Quay về</li>
                     </a>
