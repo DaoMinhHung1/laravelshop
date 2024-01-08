@@ -3,7 +3,7 @@
     padding: 0px;
     font-family: "Times New Roman", Times, serif;
 }
-body{
+body {
     padding-top: 100px;
 }
 Header {
@@ -12,7 +12,18 @@ Header {
     align-items: center;
     justify-content: space-around;
 }
-.namethuonghieu{
+ul {
+    display: flex;
+    justify-content: center;
+    li {
+        list-style: none;
+    }
+}
+a {
+    text-decoration: none;
+    color: darkgray;
+}
+.namethuonghieu {
     margin-top: 10px;
     color: white;
 }
@@ -28,13 +39,13 @@ Header {
 }
 /* Header */
 
-.linktitle{
+.linktitle {
     color: black;
     list-style: none;
     text-decoration: none;
     margin-left: 10px;
 }
-.heighttitle{
+.heighttitle {
     display: flex;
     justify-content: center;
     margin-top: 15px;
@@ -42,30 +53,30 @@ Header {
 .item {
     width: 100%;
     height: auto;
-  }
-.titletrendinghome{
+}
+.titletrendinghome {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.pxecxec{
+.pxecxec {
     margin-top: -10px;
 }
-.ptitle{
+.ptitle {
     margin-top: -10px;
 }
 
-.card{
+.card {
     height: 400px;
     width: 250px;
 }
-.card-body{
+.card-body {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-.button{
+.button {
     height: 30px;
     width: 100px;
     background-color: red;
@@ -73,10 +84,10 @@ Header {
     border-radius: 10px;
     border: red;
 }
-.giatien{
+.giatien {
     color: red;
 }
-.button:hover{
+.button:hover {
     background-color: green;
 }
 
@@ -84,7 +95,7 @@ Header {
     width: 100%;
     height: auto;
 }
-.minimap{
+.minimap {
     height: 250px;
     width: 350px;
 }
@@ -110,43 +121,44 @@ Header {
 .zoom-card:hover .imgchinhsp {
     transform: scale(1.5); /* Adjust the scale factor as per your requirement */
 }
-.logo{
+
+.logo {
     height: 100px;
 }
-.marginheadercenter{
+.marginheadercenter {
     margin-left: 100px;
 }
-.phantimkiem{
+.phantimkiem {
     display: flex;
 }
-.inputtk{
+.inputtk {
     width: 150px;
 }
-.iconshopping{
+.iconshopping {
     margin-top: 10px;
 }
 
 @keyframes slideInImgBanner {
-    0%{
+    0% {
         transform: translateY(-100px);
     }
-    100%{
+    100% {
         transform: translateX(0);
     }
 }
 @keyframes slideInProduct {
-    0%{
+    0% {
         transform: translateY(200px);
     }
-    100%{
+    100% {
         transform: translateX(0);
     }
 }
 @keyframes slideInTitle {
-    0%{
+    0% {
         transform: translateX(-50%);
     }
-    100%{
+    100% {
         transform: translateY(0);
     }
 }
@@ -160,10 +172,21 @@ Header {
     animation: slideInTitle 1s forwards; /* 1s là thời gian của hiệu ứng */
 }
 
-
-.canhsanphamtrangchu{
+.canhsanphamtrangchu {
     margin-left: -8px;
 }
 .custom-icon {
     font-size: 24px; /* Thay 24px bằng kích thước bạn muốn */
+}
+.cardreview {
+    height: 200px;
+    width: 300px;
+    border: 1px solid;
+    margin-left: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.itemcardreview {
+    text-align: center;
 }

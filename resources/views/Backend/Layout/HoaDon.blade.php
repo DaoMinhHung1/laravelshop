@@ -26,18 +26,18 @@
 </head>
 
 <body>
-@include('Backend.Component.Header')
-<div class="col-10">
-    @foreach($bills as $bill)
-    <div class="invoice">
-        <h2>Hóa Đơn Đặt Hàng #{{ $bill->id }}</h2>
-        <p>Tên Sản Phẩm: {{ $bill->namepd }}</p>
-        <p>Size: {{$bill->sizepd}}</p>
-        <p>Số Lượng: {{ $bill->quantity }}</p>
-        <p>Tổng Cộng: {{ $bill->tongtien }}</p>
-        <!-- ... Thêm thông tin khác về đơn hàng ... -->
-    </div>
-    @endforeach
+    @include('Backend.Component.Header')
+    <div class="col-10">
+        @foreach($bills as $bill)
+        <div class="invoice">
+            <h2>Hóa Đơn Đặt Hàng #{{ $bill->id }}</h2>
+            <p>Tên Sản Phẩm: {{ $bill->namepd }}</p>
+            <p>Size: {{$bill->sizepd}}</p>
+            <p>Số Lượng: {{ $bill->quantity }}</p>
+            <p>Tổng Cộng: {{ $bill->tongtien }}</p>
+            <!-- ... Thêm thông tin khác về đơn hàng ... -->
+        </div>
+        @endforeach
 </body>
 
 </html>
